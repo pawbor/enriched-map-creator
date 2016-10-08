@@ -1,0 +1,22 @@
+{
+  "name": "enriched-map-creator",
+  "version": "1.0.0",
+  "description": "Simple app to create maps with your own spatial data",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pawbor/enriched-map-creator.git"
+  },
+  "keywords": [
+    "google-maps",
+    "angularJS"
+  ],
+  "author": "Paweł Borowski <p.borowski88@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pawbor/enriched-map-creator/issues"
+  },
+  "homepage": "https://github.com/pawbor/enriched-map-creator#readme"
+}
