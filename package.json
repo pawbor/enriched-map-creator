@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Simple app to create maps with your own spatial data",
   "scripts": {
+    "start": "webpack-dev-server --content-base src --hot",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,5 +19,25 @@
   "bugs": {
     "url": "https://github.com/pawbor/enriched-map-creator/issues"
   },
-  "homepage": "https://github.com/pawbor/enriched-map-creator#readme"
+  "homepage": "https://github.com/pawbor/enriched-map-creator#readme",
+  "devDependencies": {
+    "autoprefixer": "^6.5.0",
+    "babel-core": "^6.17.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.16.0",
+    "css-loader": "^0.25.0",
+    "eslint": "^3.7.1",
+    "ng-annotate-loader": "^0.2.0",
+    "node-sass": "^3.10.1",
+    "postcss-loader": "^0.13.0",
+    "raw-loader": "^0.5.1",
+    "sass-loader": "^4.0.2",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.2"
+  },
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-ui-router": "^0.3.1"
+  }
 }
