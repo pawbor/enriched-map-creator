@@ -1,5 +1,5 @@
-import template from './app.html';
-import styles from './app.scss';
+import template from './map-editor.html';
+import styles from './map-editor.scss';
 
 class controller {
   constructor() {

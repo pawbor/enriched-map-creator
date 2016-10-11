@@ -1,12 +1,31 @@
 import angular from 'angular';
+import ngRedux from 'ng-redux';
+import createLogger from 'redux-logger';
 import uiRouter from 'angular-ui-router';
+import ngReduxRouter from 'redux-ui-router';
+
+import reducers from './reducers';
+import components from './components';
 import AppComponent from './app.component';
 
-const root = angular
-  .module('app', [
-    uiRouter
-  ])
-  .component('app', AppComponent)
-  .name;
+const logger = createLogger({
+  level: 'info',
+  collapsed: true
+});
 
-export default root;
+const module = angular
+.module('app', [
+  ngRedux,
+  uiRouter,
+  ngReduxRouter,
+  components
+])
+.config(($ngReduxProvider) => {
+  'ngInject';
+  $ngReduxProvider.createStoreWith(reducers, [logger, 'ngUiRouterMiddleware']);
+})
+.component('app', AppComponent)
+.value('EventEmitter', payload => ({ $event: payload}))
+.name;
+
+export default module;
