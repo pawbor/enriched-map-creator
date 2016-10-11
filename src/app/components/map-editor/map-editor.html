@@ -1,1 +1,3 @@
-<pb-gm-map class="{{$ctrl.styles.editorMap}}"></pb-gm-map>
+<pb-gm-map class="{{$ctrl.styles.editorMap}}">
+  <pb-gm-overlay ng-repeat="overlay in $ctrl.overlays" overlay="overlay"></pb-gm-overlay>
+</pb-gm-map>
