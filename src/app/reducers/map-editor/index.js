@@ -1,8 +1,16 @@
-import { combineReducers } from 'redux';
-import overlays from './overlays';
+const INITIAL_STATE = {
+  modes: [{
+    id: 'ADD_POINT'
+  }],
+  currentMode: 'ADD_POINT'
+};
 
-const reducer = combineReducers({
-  overlays
-});
-
-export default reducer;
+export default function (state = INITIAL_STATE, action) {
+  if (!action || !action.type) {
+    return state;
+  }
+  switch (action.type) {
+    default:
+    return state;
+  }
+}

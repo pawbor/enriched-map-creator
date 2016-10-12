@@ -21,14 +21,19 @@ class controller {
 }
 
 function mapState(state) {
-  return {
-    overlays: state.mapEditor.overlays.map(createMarker)
-  };
+  var layers = state.currentEnrichedMap.layers.map(processLayer);
+  return {layers};
 }
 
-function createMarker(position) {
+function processLayer(layer) {
+  var overlays = layer.overlays.map(createMarker);
+  return Object.assign({}, layer, {overlays});
+}
+
+function createMarker(overlay) {
+  var [lng, lat] = overlay.coordinates;
   return new gMaps.Marker({
-    position: position
+    position: {lng, lat}
   });
 }
 
