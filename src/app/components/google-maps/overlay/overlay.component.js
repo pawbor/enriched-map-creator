@@ -1,3 +1,5 @@
+import template from './overlay.html';
+
 class controller {
   $onChanges(changes) {
     this.onOverlayChange(changes);
@@ -25,7 +27,9 @@ const component = {
   bindings: {
     overlay: '<'
   },
-  controller
+  template,
+  controller,
+  transclude: true
 };
 
 export default component;
