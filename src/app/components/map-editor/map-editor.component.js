@@ -18,6 +18,14 @@ class controller {
   $onDestroy() {
     this.disconnect();
   }
+
+  mapClicked({data: [{latLng}]}) {
+    console.log('map clicked', latLng.toString());
+  }
+
+  overlayClicked({target}) {
+    console.log('overlay clicked', target.getPosition().toString());
+  }
 }
 
 function mapState(state) {
