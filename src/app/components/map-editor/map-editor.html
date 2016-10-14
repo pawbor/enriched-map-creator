@@ -1,10 +1,10 @@
 <pb-gm-map class="{{$ctrl.styles.editorMap}}">
-  <pb-gm-overlay ng-repeat="overlay in $ctrl.overlays"
-      overlay="overlay">
+  <pb-gm-geo-json-overlay ng-repeat="feature in $ctrl.features"
+      geometry="feature.geometry">
     <pb-gm-listener event="'click'"
         on-event="$ctrl.overlayClicked($event)">
     </pb-gm-listener>
-  </pb-gm-overlay>
+  </pb-gm-geo-json-overlay>
   <pb-gm-listener event="'click'"
       on-event="$ctrl.mapClicked($event)">
   </pb-gm-listener>

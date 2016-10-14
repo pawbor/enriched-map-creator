@@ -40,20 +40,7 @@ class controller {
 }
 
 function mapState(state) {
-  var {selectedLayer, layers} = state.enrichedMap;
-  var overlays = processFeatures(state.enrichedMap.features);
-  return {selectedLayer, layers, overlays};
-}
-
-function processFeatures(features) {
-  return features.map(createMarker);
-}
-
-function createMarker(feature) {
-  var [lng, lat] = feature.geometry.coordinates;
-  return new gMaps.Marker({
-    position: {lng, lat}
-  });
+  return state.enrichedMap;
 }
 
 const component = {
