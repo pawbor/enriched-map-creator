@@ -1,4 +1,5 @@
 import gMaps from 'libs/google-maps';
+import { addFeature } from 'app/actions/enriched-map';
 
 import template from './map-editor.html';
 import styles from './map-editor.scss';
@@ -11,7 +12,9 @@ class controller {
   }
 
   $onInit() {
-    var actions = {};
+    var actions = {
+      addFeature
+    };
     this.disconnect = this.redux.connect(mapState, actions)(this);
   }
 
@@ -20,7 +23,15 @@ class controller {
   }
 
   mapClicked({data: [{latLng}]}) {
-    console.log('map clicked', latLng.toString());
+    var {lat, lng} = latLng.toJSON();
+    var feature = {
+      layerId: this.selectedLayer,
+      geometry: {
+        type: 'Point',
+        coordinates: [lng, lat]
+      }
+    };
+    this.addFeature(feature);
   }
 
   overlayClicked({target}) {
@@ -29,17 +40,17 @@ class controller {
 }
 
 function mapState(state) {
-  var layers = state.currentEnrichedMap.layers.map(processLayer);
-  return {layers};
+  var {selectedLayer, layers} = state.enrichedMap;
+  var overlays = processFeatures(state.enrichedMap.features);
+  return {selectedLayer, layers, overlays};
 }
 
-function processLayer(layer) {
-  var overlays = layer.overlays.map(createMarker);
-  return Object.assign({}, layer, {overlays});
+function processFeatures(features) {
+  return features.map(createMarker);
 }
 
-function createMarker(overlay) {
-  var [lng, lat] = overlay.coordinates;
+function createMarker(feature) {
+  var [lng, lat] = feature.geometry.coordinates;
   return new gMaps.Marker({
     position: {lng, lat}
   });

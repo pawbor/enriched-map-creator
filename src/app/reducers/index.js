@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import { router } from 'redux-ui-router';
-import currentEnrichedMap from './current-enriched-map';
+import enrichedMap from './enriched-map';
 
 const reducers = combineReducers({
   router,
-  currentEnrichedMap,
+  enrichedMap
 });
 
 export default reducers;
