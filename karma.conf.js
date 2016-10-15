@@ -1,6 +1,10 @@
+var webpack = require('./webpack.config');
+
+delete webpack.entry;
+
 module.exports = function(config) {
   config.set({
-    browsers: ['PhantomJS'],
+    browsers: ['Chrome', 'PhantomJS'],
     files: [{
       pattern: 'test-context.js',
       watched: false
@@ -9,16 +13,7 @@ module.exports = function(config) {
     preprocessors: {
       'test-context.js': ['webpack']
     },
-    webpack: {
-      module: {
-        loaders: [{
-          test: /\.js$/,
-          exclude: /node_modules/,
-          loaders: ['ng-annotate', 'babel']
-        }]
-      },
-      watch: true
-    },
+    webpack,
     webpackServer: {
       noInfo: true
     }

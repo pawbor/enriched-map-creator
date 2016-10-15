@@ -1,7 +1,7 @@
 var path = require('path');
 
 module.exports = {
-  devtool: 'source-map',
+  devtool: 'inline-source-map',
   resolve: {
     root: path.resolve('./src')
   },
