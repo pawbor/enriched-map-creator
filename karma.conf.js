@@ -1,6 +1,7 @@
 var webpack = require('./webpack.config');
 
 delete webpack.entry;
+delete webpack.devtool;
 
 module.exports = function(config) {
   config.set({
