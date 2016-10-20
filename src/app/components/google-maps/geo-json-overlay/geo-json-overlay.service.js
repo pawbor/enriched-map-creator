@@ -1,5 +1,5 @@
 import gMaps from 'libs/google-maps';
-import * as GeometryType from 'app/constants/geo-json-geometry-types';
+import { GeometryType } from '../common/geo-json';
 
 const toLatLngs = {
   fromPosition: ([lng, lat]) => ({lng, lat}),
