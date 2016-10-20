@@ -7,6 +7,9 @@ module.exports = function(config) {
   config.set({
     browsers: ['Chrome', 'PhantomJS'],
     files: [{
+      pattern: 'src/load-google-maps.js',
+      watched: false
+    }, {
       pattern: 'test-context.js',
       watched: false
     }],
