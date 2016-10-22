@@ -1,4 +1,3 @@
-import gMaps from 'libs/google-maps';
 import { addFeature } from 'app/actions/enriched-map';
 
 import template from './map-editor.html';
