@@ -37,17 +37,19 @@ class Service {
       toLatLngs
     });
   }
+
   createOverlay({type, coordinates}) {
     var converter = converters[type];
     if(!converter) {
-      throw new Error('Type ${type} not supported');
+      throw new Error(`Type ${type} not supported`);
     }
     return converter(coordinates);
   }
+  
   updateOverlay(overlay, {type, coordinates}) {
     var updater = updaters[type];
     if(!updater) {
-      throw new Error('Type ${type} not supported');
+      throw new Error(`Type ${type} not supported`);
     }
     return updater(overlay, coordinates);
   }
