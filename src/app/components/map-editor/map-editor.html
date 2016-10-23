@@ -1,11 +1,28 @@
-<pb-gm-map class="{{$ctrl.styles.editorMap}}">
-  <pb-gm-geo-json-overlay ng-repeat="feature in $ctrl.features"
-      geometry="feature.geometry">
-    <pb-gm-listener event="'click'"
-        on-event="$ctrl.overlayClicked($event)">
-    </pb-gm-listener>
-  </pb-gm-geo-json-overlay>
-  <pb-gm-listener event="'click'"
-      on-event="$ctrl.mapClicked($event)">
-  </pb-gm-listener>
-</pb-gm-map>
+<div flex
+    layout="column">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <md-button class="md-icon-button"
+          ng-click=""
+          aria-label="Show Menu">
+        <md-icon>menu</md-icon>
+      </md-button>
+      <h1>Map Editor</h1>
+    </div>
+  </md-toolbar>
+
+  <div flex
+      class="content">
+    <pb-gm-map flex>
+      <pb-gm-geo-json-overlay ng-repeat="feature in $ctrl.features"
+          geometry="feature.geometry">
+        <pb-gm-listener event="'click'"
+            on-event="$ctrl.overlayClicked($event)">
+        </pb-gm-listener>
+      </pb-gm-geo-json-overlay>
+      <pb-gm-listener event="'click'"
+          on-event="$ctrl.mapClicked($event)">
+      </pb-gm-listener>
+    </pb-gm-map>
+  </div>
+</div>
