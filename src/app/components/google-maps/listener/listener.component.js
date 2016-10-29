@@ -1,7 +1,7 @@
 class controller {
-  constructor(EventEmitter) {
+  constructor($scope) {
     'ngInject';
-    this.EventEmitter = EventEmitter;
+    this.$scope = $scope;
   }
 
   $onChanges(changes) {
@@ -28,11 +28,14 @@ class controller {
     if(!this.event || !this.target) { return; }
 
     this.listener = this.target.addListener(this.event, (...data) => {
-      let $event = this.EventEmitter({
+      let $event = {
         target: this.target,
         data
+      };
+
+      this.$scope.$apply(() => {
+        this.onEvent({$event});
       });
-      this.onEvent($event);
     });
   }
 
