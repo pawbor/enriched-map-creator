@@ -15,7 +15,8 @@
       class="content">
     <pb-gm-map flex>
       <pb-gm-geo-json-overlay ng-repeat="feature in $ctrl.features"
-          geometry="feature.geometry">
+          geometry="feature.geometry"
+          properties="feature">
         <pb-gm-listener event="'click'"
             on-event="$ctrl.overlayClicked($event)">
         </pb-gm-listener>

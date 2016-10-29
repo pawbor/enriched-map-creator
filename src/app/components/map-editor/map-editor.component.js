@@ -1,20 +1,9 @@
-import { addFeature } from 'app/actions/enriched-map';
-
 import template from './map-editor.html';
-import styles from './map-editor.scss';
+import './map-editor.scss';
 
 class controller {
-  constructor($ngRedux) {
-    'ngInject';
-    this.styles = styles;
-    this.redux = $ngRedux;
-  }
-
   $onInit() {
-    var actions = {
-      addFeature
-    };
-    this.disconnect = this.redux.connect(mapState, actions)(this);
+    this.features = [];
   }
 
   $onDestroy() {
@@ -23,23 +12,20 @@ class controller {
 
   mapClicked({data: [{latLng}]}) {
     var {lat, lng} = latLng.toJSON();
-    var feature = {
-      layerId: this.selectedLayer,
-      geometry: {
-        type: 'Point',
-        coordinates: [lng, lat]
-      }
+    var coordinates = [lng, lat];
+    var geometry = {
+      type: 'Point',
+      coordinates
     };
-    this.addFeature(feature);
+    var feature = {geometry};
+    this.features.push(feature);
   }
 
   overlayClicked({target}) {
-    console.log('overlay clicked', target.getPosition().toString());
+    var feature = target.externalProperties;
+    var index = this.features.indexOf(feature);
+    this.features.splice(index, 1);
   }
-}
-
-function mapState(state) {
-  return state.enrichedMap;
 }
 
 const component = {
