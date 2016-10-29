@@ -25,7 +25,6 @@ const module = angular
   $ngReduxProvider.createStoreWith(reducers, [logger, 'ngUiRouterMiddleware']);
 })
 .component('app', AppComponent)
-.value('EventEmitter', payload => ({ $event: payload}))
 .name;
 
 export default module;

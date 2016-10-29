@@ -2,10 +2,9 @@ import template from './map.html';
 import styles from './map.scss';
 
 class controller {
-  constructor($element, EventEmitter, pbGmMapsPool) {
+  constructor($element, pbGmMapsPool) {
     'ngInject';
     this.element = $element;
-    this.EventEmitter = EventEmitter;
     this.mapsPool = pbGmMapsPool;
   }
 
@@ -16,10 +15,10 @@ class controller {
     this.element.append(mapDiv);
     mapDiv.classList.add(styles.mapContainer);
 
-    let $event = this.EventEmitter({
+    var $event = {
       mapId: this.mapId
-    });
-    this.onMapInit($event);
+    };
+    this.onMapInit({$event});
   }
 
   $onDestroy() {
